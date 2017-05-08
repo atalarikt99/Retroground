@@ -14,8 +14,9 @@ public class form extends javax.swing.JFrame {
     /**
      * Creates new form form
      */
-    public form() {
+    public form(String user) {
         initComponents();
+        txtAdmin.setText(user);
     }
 
     /**
@@ -27,10 +28,53 @@ public class form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtAdmin = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        pack();
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel1.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        jLabel3.setText("FORM PELANGGAN");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(620, 20, 340, 80);
+
+        jLabel1.setFont(new java.awt.Font("Humanst521 Lt BT", 1, 36)); // NOI18N
+        jLabel1.setText("RetroGround");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(10, 30, 220, 50);
+
+        jLabel2.setFont(new java.awt.Font("Century751 BT", 0, 18)); // NOI18N
+        jLabel2.setText("Karena yang jadul juga asyik!");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(10, 70, 240, 30);
+
+        txtAdmin.setFont(new java.awt.Font("Papyrus", 0, 18)); // NOI18N
+        jPanel1.add(txtAdmin);
+        txtAdmin.setBounds(370, 90, 230, 30);
+
+        jPanel2.setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("Papyrus", 0, 18)); // NOI18N
+        jLabel4.setText("Admin: ");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(10, 10, 70, 30);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(280, 80, 330, 50);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 1070, 130);
+
+        setBounds(0, 0, 974, 502);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -63,11 +107,19 @@ public class form extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new form().setVisible(true);
+                String user = null;
+                new form(user).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtAdmin;
     // End of variables declaration//GEN-END:variables
 }

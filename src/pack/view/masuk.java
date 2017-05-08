@@ -4,12 +4,22 @@
  * and open the template in the editor.
  */
 package pack.view;
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.sql.Statement; 
+import java.util.logging.Level; 
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Mokleters
  */
 public class masuk extends javax.swing.JFrame {
+String user;
 
     /**
      * Creates new form masuk
@@ -31,6 +41,13 @@ public class masuk extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
+        btnMasuk = new javax.swing.JButton();
+        btnDaftar = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -51,13 +68,76 @@ public class masuk extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Impact", 0, 72)); // NOI18N
         jLabel3.setText("LOG IN");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(460, 30, 200, 80);
+        jLabel3.setBounds(460, 30, 180, 80);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 680, 130);
 
-        setBounds(0, 0, 691, 497);
+        jLabel4.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
+        jLabel4.setText("Password");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(100, 270, 130, 40);
+
+        jLabel5.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
+        jLabel5.setText("Username");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(100, 190, 130, 40);
+
+        txtUser.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
+        getContentPane().add(txtUser);
+        txtUser.setBounds(240, 190, 340, 40);
+
+        txtPass.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(txtPass);
+        txtPass.setBounds(240, 270, 340, 40);
+
+        btnMasuk.setFont(new java.awt.Font("JACKPORT REGULAR NCV", 0, 24)); // NOI18N
+        btnMasuk.setText("Masuk");
+        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasukActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMasuk);
+        btnMasuk.setBounds(50, 370, 150, 60);
+
+        btnDaftar.setFont(new java.awt.Font("JACKPORT REGULAR NCV", 0, 24)); // NOI18N
+        btnDaftar.setText("Daftar");
+        getContentPane().add(btnDaftar);
+        btnDaftar.setBounds(260, 370, 150, 60);
+
+        btnKeluar.setFont(new java.awt.Font("JACKPORT REGULAR NCV", 0, 24)); // NOI18N
+        btnKeluar.setText("Keluar");
+        getContentPane().add(btnKeluar);
+        btnKeluar.setBounds(470, 370, 150, 60);
+
+        setBounds(0, 0, 679, 497);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+        Connection connection; 
+        PreparedStatement ps; 
+        try { 
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/retroground?zeroDateTimeBehavior=convertToNull", "root", ""); 
+            ps = connection.prepareStatement("SELECT * FROM  `tb_akun` WHERE `username` = ? AND `password` = ?"); 
+            ps.setString(1, txtUser.getText()); 
+            ps.setString(2, txtPass.getText()); 
+            ResultSet result = ps.executeQuery(); 
+            if(result.next()){ 
+                user = txtUser.getText();
+                new form(user).show(); 
+                 //perlu deklarasi user di class utama. 
+                this.dispose(); 
+            } 
+            else{ 
+                JOptionPane.showMessageDialog(rootPane, "Salah!"); 
+                txtPass.setText(""); 
+                txtUser.requestFocus(); 
+            }
+            }catch (SQLException ex){ 
+            JOptionPane.showMessageDialog(rootPane,"Gagal!");
+            }
+    }//GEN-LAST:event_btnMasukActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,9 +175,16 @@ public class masuk extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDaftar;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
