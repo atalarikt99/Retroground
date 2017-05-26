@@ -68,7 +68,7 @@ public class form extends javax.swing.JFrame {
         cbCariKategori = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelToko = new javax.swing.JTable();
+        tabelRetro = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
@@ -183,8 +183,8 @@ public class form extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(100, 380, 320, 40);
 
-        tabelToko.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tabelToko.setModel(new javax.swing.table.DefaultTableModel(
+        tabelRetro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabelRetro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -195,7 +195,7 @@ public class form extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Konsol", "Genre", "Harga"
             }
         ));
-        jScrollPane1.setViewportView(tabelToko);
+        jScrollPane1.setViewportView(tabelRetro);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 430, 890, 420);
@@ -317,7 +317,7 @@ public class form extends javax.swing.JFrame {
         return btnKeluar; 
     } 
     public JTable getTableData(){ 
-        return tabelToko; 
+        return tabelRetro; 
     }
     
     /**
@@ -380,7 +380,7 @@ public class form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelToko;
+    private javax.swing.JTable tabelRetro;
     private javax.swing.JTextField txtAdmin;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtKode;
