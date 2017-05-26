@@ -22,11 +22,11 @@ import pack.model.m_retro;
  */
 public class daoRetro implements implementRetro {
      Connection connection; 
-    public String TampilData = "SELECT * FROM `barang`"; 
-    public String UbahData = "UPDATE `barang` SET `Nama_Barang`=?, `Harga`=?, `Kategori`=?, `Jenis`=? Where `Kode_Barang`=?;"; 
-    public String SimpanData = "INSERT INTO `barang` VALUES (?, ?, ?, ?, ?)"; 
-    public String HapusData = "DELETE FROM `barang` WHERE Kode_Barang=?"; 
-    public String CariKategori = "SELECT `Kode_Barang`, `Nama_Barang`, `Kategori`, `Jenis`, `Harga` FROM `barang` WHERE Kategori like ?";
+    public String TampilData = "SELECT * FROM `game`"; 
+    public String UbahData = "UPDATE `game` SET `Nama_Game`=?, `Harga`=?, `Konsol`=?, `Genre`=? Where `Kode_Game`=?;"; 
+    public String SimpanData = "INSERT INTO `game` VALUES (?, ?, ?, ?, ?)"; 
+    public String HapusData = "DELETE FROM `game` WHERE Kode_Game=?"; 
+    public String CariKategori = "SELECT `Kode_Game`, `Nama_Game`, `Konsol`, `Genre`, `Harga` FROM `game` WHERE Konsol like ?";
      public daoRetro(){ 
         connection = c_koneksi.setKoneksi(); 
     } 
@@ -45,8 +45,8 @@ public class daoRetro implements implementRetro {
         statement.setString(5, a.getkode()); 
         statement.setString(1, a.getnama()); 
         statement.setString(2, a.getharga()); 
-        statement.setString(3, a.getkategori()); 
-        statement.setString(4, a.getjenis()); 
+        statement.setString(3, a.getkonsol()); 
+        statement.setString(4, a.getgenre()); 
         statement.executeUpdate(); 
          
     }   catch (SQLException ex) { 
@@ -63,8 +63,8 @@ null, ex);
         statement = connection.prepareStatement(SimpanData); 
         statement.setString(1, a.getkode()); 
         statement.setString(2, a.getnama()); 
-        statement.setString(3, a.getkategori()); 
-        statement.setString(4, a.getjenis()); 
+        statement.setString(3, a.getkonsol()); 
+        statement.setString(4, a.getgenre()); 
         statement.setString(5, a.getharga()); 
         statement.executeUpdate(); 
         ResultSet rs = statement.getGeneratedKeys(); 
@@ -92,8 +92,8 @@ st=connection.prepareStatement(CariKategori);
             m_retro retro = new m_retro(); 
             retro.setkode(rs.getString("Kode_Barang")); 
             retro.setnama(rs.getString("Nama_Barang")); 
-            retro.setkategori(rs.getString("Kategori")); 
-            retro.setjenis(rs.getString("Jenis")); 
+            retro.setkonsol(rs.getString("Konsol")); 
+            retro.setgenre(rs.getString("Genre")); 
             retro.setharga(rs.getString("Harga")); 
             lt.add(retro); 
     } 
@@ -116,8 +116,8 @@ null, ex);
             m_retro retro = new m_retro(); 
             retro.setkode(rs.getString("Kode_Barang")); 
             retro.setnama(rs.getString("Nama_Barang")); 
-            retro.setkategori(rs.getString("Kategori")); 
-            retro.setjenis(rs.getString("Jenis")); 
+            retro.setkonsol(rs.getString("Konsol")); 
+            retro.setgenre(rs.getString("Genre")); 
             retro.setharga(rs.getString("Harga")); 
             lt.add(retro); 
     } 

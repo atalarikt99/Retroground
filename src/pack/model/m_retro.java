@@ -10,7 +10,7 @@ package pack.model;
  * @author Mokleters
  */
 public class m_retro {
-    public String Nama_Game, Jenis, Harga, Kategori; 
+    public String Nama_Game, Genre, Harga, Konsol; 
 public String Kode_Game; 
  
 public String getkode() 
@@ -21,14 +21,14 @@ public String getnama()
 { 
     return Nama_Game; 
 } 
-public String getkategori()  
+public String getkonsol()  
 { 
-    return Kategori; 
+    return Konsol; 
 } 
  
-public String getjenis() 
+public String getgenre() 
 { 
-    return Jenis; 
+    return Genre; 
 } 
 public String getharga() 
 { 
@@ -45,13 +45,13 @@ public void setnama(String nama)
 { 
     this.Nama_Game= nama; 
 } 
-public void setkategori(String kategori)  
+public void setkonsol(String konsol)  
 { 
-    this.Kategori=kategori; 
+    this.Konsol=konsol; 
 } 
-public void setjenis(String jenis) 
+public void setgenre(String genre) 
 { 
-    this.Jenis= jenis; 
+    this.Genre= genre; 
 } 
 public void setharga(String harga) 
 { 

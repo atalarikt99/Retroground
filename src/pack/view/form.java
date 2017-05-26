@@ -5,17 +5,36 @@
  */
 package pack.view;
 
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.util.ArrayList; 
+import java.util.List; 
+import java.util.logging.Level; 
+import java.util.logging.Logger; 
+import javax.swing.JButton; 
+import javax.swing.JComboBox; 
+import javax.swing.JOptionPane; 
+import javax.swing.JTable; 
+import javax.swing.JTextField; 
+import javax.swing.table.DefaultTableModel; 
+import pack.control.c_koneksi; 
+import pack.control.controllerRetro; 
+import pack.model.m_retro;
+
 /**
  *
  * @author Mokleters
  */
 public class form extends javax.swing.JFrame {
-
+    controllerRetro cretro;
+    List<m_retro>listdata = new ArrayList<>();
     /**
      * Creates new form form
      */
     public form(String user) {
         initComponents();
+        cretro = new controllerRetro (this);
+        cretro.isiTable();
         txtAdmin.setText(user);
     }
 
@@ -35,6 +54,27 @@ public class form extends javax.swing.JFrame {
         txtAdmin = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtKode = new javax.swing.JTextField();
+        txtNama = new javax.swing.JTextField();
+        txtHarga = new javax.swing.JTextField();
+        cbKategori = new javax.swing.JComboBox<>();
+        cbJenis = new javax.swing.JComboBox<>();
+        cbCariKategori = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelToko = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        btnBersih = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -74,9 +114,211 @@ public class form extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1070, 130);
 
-        setBounds(0, 0, 974, 502);
+        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel4.setLayout(null);
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel7.setText("Harga");
+        jPanel4.add(jLabel7);
+        jLabel7.setBounds(20, 170, 50, 30);
+
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel8.setText("Kode Game");
+        jPanel4.add(jLabel8);
+        jLabel8.setBounds(20, 10, 100, 30);
+
+        jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel9.setText("Nama Game");
+        jPanel4.add(jLabel9);
+        jLabel9.setBounds(20, 50, 100, 30);
+
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel10.setText("Konsol Game");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(20, 90, 130, 30);
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel11.setText("Genre Game");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(20, 130, 130, 30);
+
+        txtKode.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        jPanel4.add(txtKode);
+        txtKode.setBounds(160, 10, 450, 30);
+
+        txtNama.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        jPanel4.add(txtNama);
+        txtNama.setBounds(160, 50, 450, 30);
+
+        txtHarga.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        jPanel4.add(txtHarga);
+        txtHarga.setBounds(160, 170, 450, 30);
+
+        cbKategori.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sega Saturn", "Sega Genesis", "Super NES", "NES", "Arcade", "Sony Playstation", "Nintendo Game Boy", "Sega Game Gear", "Lainnya" }));
+        jPanel4.add(cbKategori);
+        cbKategori.setBounds(160, 90, 450, 30);
+
+        cbJenis.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        cbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platformer", "Olahraga", "Puzzle", "Tembak-tembakan", "Lainnya" }));
+        jPanel4.add(cbJenis);
+        cbJenis.setBounds(160, 130, 450, 30);
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(60, 140, 650, 220);
+
+        cbCariKategori.setFont(new java.awt.Font("Humnst777 BT", 0, 14)); // NOI18N
+        cbCariKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sega Saturn", "Sega Genesis", "Super NES", "NES", "Arcade", "Sony Playstation", "Nintendo Game Boy", "Sega Game Gear", "Lainnya" }));
+        getContentPane().add(cbCariKategori);
+        cbCariKategori.setBounds(490, 380, 260, 40);
+
+        jLabel5.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 24)); // NOI18N
+        jLabel5.setText("Cari berdasarkan konsol game");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(100, 380, 320, 40);
+
+        tabelToko.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabelToko.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Kode Barang", "Nama Barang", "Konsol", "Genre", "Harga"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelToko);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 430, 890, 420);
+
+        jPanel3.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel3.setLayout(null);
+
+        btnSimpan.setFont(new java.awt.Font("Geometr212 BkCn BT", 0, 14)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSimpan);
+        btnSimpan.setBounds(10, 10, 180, 30);
+
+        btnUbah.setFont(new java.awt.Font("Geometr212 BkCn BT", 0, 14)); // NOI18N
+        btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnUbah);
+        btnUbah.setBounds(10, 50, 180, 30);
+
+        btnBersih.setFont(new java.awt.Font("Geometr212 BkCn BT", 0, 14)); // NOI18N
+        btnBersih.setText("Bersihkan");
+        btnBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBersihActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnBersih);
+        btnBersih.setBounds(10, 90, 180, 30);
+
+        btnHapus.setFont(new java.awt.Font("Geometr212 BkCn BT", 0, 14)); // NOI18N
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnHapus);
+        btnHapus.setBounds(10, 130, 180, 30);
+
+        btnKeluar.setFont(new java.awt.Font("Geometr212 BkCn BT", 0, 14)); // NOI18N
+        btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnKeluar);
+        btnKeluar.setBounds(10, 170, 180, 30);
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(740, 140, 200, 220);
+
+        setBounds(0, 0, 974, 899);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        cretro.SimpanData();
+        cretro.isiTable();
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        cretro.Ubah();
+        cretro.isiTable();
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBersihActionPerformed
+        cretro.Reset();
+    }//GEN-LAST:event_btnBersihActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        cretro.Hapus();
+        cretro.isiTable();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+        public JTextField getTxtKode(){ 
+        return txtKode; 
+    } 
+    public JTextField getTxtNama(){ 
+        return txtNama; 
+    } 
+    public JTextField getTxtHarga(){ 
+        return txtHarga; 
+    } 
+    public JComboBox getCbKategori(){ 
+        return cbKategori; 
+    } 
+    public JComboBox getCbJenis(){ 
+        return cbJenis; 
+    } 
+    public JComboBox getCbCariKategori(){ 
+        return cbCariKategori; 
+    } 
+    public JButton getButtonHapus(){ 
+        return btnHapus; 
+    } 
+     
+    public JButton getButtonBersih(){ 
+        return btnBersih; 
+    } 
+    public JButton getButtonSimpan(){ 
+        return btnSimpan; 
+    } 
+    public JButton getButtonUbah(){ 
+        return btnUbah; 
+    } 
+    public JButton getButtonKeluar(){ 
+        return btnKeluar; 
+    } 
+    public JTable getTableData(){ 
+        return tabelToko; 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -114,12 +356,33 @@ public class form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBersih;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JComboBox<String> cbCariKategori;
+    private javax.swing.JComboBox<String> cbJenis;
+    private javax.swing.JComboBox<String> cbKategori;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelToko;
     private javax.swing.JTextField txtAdmin;
+    private javax.swing.JTextField txtHarga;
+    private javax.swing.JTextField txtKode;
+    private javax.swing.JTextField txtNama;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,9 +33,9 @@ public class tableModelRetro extends AbstractTableModel{
         case 1: 
             return"Nama_Game"; 
         case 2: 
-            return"Kategori"; 
+            return"Konsol"; 
         case 3: 
-            return"Jenis"; 
+            return"Genre"; 
         case 4: 
             return"Harga"; 
         default: 
@@ -49,9 +49,9 @@ public class tableModelRetro extends AbstractTableModel{
         case 1: 
             return lt.get(row).getnama(); 
         case 2: 
-            return lt.get(row).getkategori(); 
+            return lt.get(row).getkonsol(); 
         case 3: 
-            return lt.get(row).getjenis(); 
+            return lt.get(row).getgenre(); 
         case 4: 
             return lt.get(row).getharga(); 
         default:

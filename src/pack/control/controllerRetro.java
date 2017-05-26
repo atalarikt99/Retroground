@@ -45,7 +45,7 @@ public class controllerRetro {
         }else{ 
             String kode = (fm.getTxtKode().getText()); 
             impRetro.HapusData(kode); 
-            JOptionPane.showMessageDialog(hm, "Data berhasil dihapus"); 
+            JOptionPane.showMessageDialog(fm, "Data berhasil dihapus"); 
         }   
     } 
     //menyimpan data 
@@ -55,8 +55,8 @@ public class controllerRetro {
         retro.setnama(fm.getTxtNama().getText()); 
         retro.setharga(fm.getTxtHarga().getText()); 
         
-retro.setkategori(fm.getCbKategori().getSelectedItem().toString()); 
-        retro.setjenis(fm.getCbJenis().getSelectedItem().toString()); 
+retro.setkonsol(fm.getCbKategori().getSelectedItem().toString()); 
+        retro.setgenre(fm.getCbJenis().getSelectedItem().toString()); 
         impRetro.SimpanData(retro); 
     } 
     //mengubah data 
@@ -65,8 +65,8 @@ retro.setkategori(fm.getCbKategori().getSelectedItem().toString());
         retro.setkode(fm.getTxtKode().getText()); 
         retro.setnama(fm.getTxtNama().getText()); 
         
-retro.setkategori(fm.getCbKategori().getSelectedItem().toString()); 
-        retro.setjenis(fm.getCbJenis().getSelectedItem().toString()); 
+retro.setkonsol(fm.getCbKategori().getSelectedItem().toString()); 
+        retro.setgenre(fm.getCbJenis().getSelectedItem().toString()); 
         retro.setharga(fm.getTxtHarga().getText()); 
         impRetro.UbahData(retro); 
     } 
@@ -81,9 +81,9 @@ retro.setkategori(fm.getCbKategori().getSelectedItem().toString());
     fm.getTxtKode().setText(lt.get(row).getkode().toString()); 
     fm.getTxtNama().setText(lt.get(row).getnama().toString()); 
     
-fm.getCbKategori().setSelectedItem(lt.get(row).getkategori().toString()); 
+fm.getCbKategori().setSelectedItem(lt.get(row).getkonsol().toString()); 
     
-fm.getCbJenis().setSelectedItem(lt.get(row).getjenis().toString()); 
+fm.getCbJenis().setSelectedItem(lt.get(row).getgenre().toString()); 
     fm.getTxtHarga().setText(lt.get(row).getharga().toString()); 
      
          
@@ -93,7 +93,7 @@ fm.getCbJenis().setSelectedItem(lt.get(row).getjenis().toString());
 (!fm.getCbCariKategori().getSelectedItem().toString().isEmpty()) { 
             isiTableCariKategori(); 
         } else { 
-            JOptionPane.showMessageDialog(fm, "Silahkan Pilih Kategori"); 
+            JOptionPane.showMessageDialog(fm, "Silahkan Pilih Konsol"); 
         } 
     }  
  
