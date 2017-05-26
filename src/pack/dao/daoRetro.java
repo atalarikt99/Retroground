@@ -80,18 +80,18 @@ null, ex);
     }
     //menampilkan data ke tabel sesuai pencarian 
     @Override 
-    public List<m_retro> getCariKategori(String kategori) { 
+    public List<m_retro> getCariKategori(String konsol) { 
     List<m_retro> lt=null; 
     try { 
         lt = new ArrayList<m_retro>();  
         PreparedStatement 
 st=connection.prepareStatement(CariKategori); 
-        st.setString(1, "%"+kategori+"%"); 
+        st.setString(1, "%"+konsol+"%"); 
         ResultSet rs = st.executeQuery(); 
         while (rs.next()){ 
             m_retro retro = new m_retro(); 
-            retro.setkode(rs.getString("Kode_Barang")); 
-            retro.setnama(rs.getString("Nama_Barang")); 
+            retro.setkode(rs.getString("Kode_Game")); 
+            retro.setnama(rs.getString("Nama_Game")); 
             retro.setkonsol(rs.getString("Konsol")); 
             retro.setgenre(rs.getString("Genre")); 
             retro.setharga(rs.getString("Harga")); 
