@@ -41,7 +41,7 @@ public class controllerRetro {
 //menghapus data yang dipilih 
     public void Hapus(){ 
         if (fm.getTxtKode().getText().trim().isEmpty()){ 
-            JOptionPane.showMessageDialog(fm, "Masukkan kode permainan"); 
+            JOptionPane.showMessageDialog(fm, "Masukkan kode game"); 
         }else{ 
             String kode = (fm.getTxtKode().getText()); 
             impRetro.HapusData(kode); 
