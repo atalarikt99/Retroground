@@ -103,11 +103,21 @@ String user;
 
         btnDaftar.setFont(new java.awt.Font("JACKPORT REGULAR NCV", 0, 24)); // NOI18N
         btnDaftar.setText("Daftar");
+        btnDaftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDaftar);
         btnDaftar.setBounds(260, 370, 150, 60);
 
         btnKeluar.setFont(new java.awt.Font("JACKPORT REGULAR NCV", 0, 24)); // NOI18N
         btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnKeluar);
         btnKeluar.setBounds(470, 370, 150, 60);
 
@@ -138,6 +148,14 @@ String user;
             JOptionPane.showMessageDialog(rootPane,"Gagal!");
             }
     }//GEN-LAST:event_btnMasukActionPerformed
+
+    private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDaftarActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
