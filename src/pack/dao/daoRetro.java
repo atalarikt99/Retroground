@@ -114,8 +114,8 @@ null, ex);
         ResultSet rs = st.executeQuery(TampilData); 
         while (rs.next()){ 
             m_retro retro = new m_retro(); 
-            retro.setkode(rs.getString("Kode_Barang")); 
-            retro.setnama(rs.getString("Nama_Barang")); 
+            retro.setkode(rs.getString("Kode_Game")); 
+            retro.setnama(rs.getString("Nama_Game")); 
             retro.setkonsol(rs.getString("Konsol")); 
             retro.setgenre(rs.getString("Genre")); 
             retro.setharga(rs.getString("Harga")); 
