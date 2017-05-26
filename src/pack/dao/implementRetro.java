@@ -16,6 +16,6 @@ public interface implementRetro {
     public void UbahData(m_retro a); 
     public void SimpanData(m_retro a); 
     public void HapusData(String kode); 
-    public List<m_retro> getCariKategori(String kategori); 
+    public List<m_retro> getCariKategori(String konsol); 
     public List<m_retro> getAll();
 }
