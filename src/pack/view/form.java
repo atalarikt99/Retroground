@@ -97,6 +97,7 @@ public class form extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(10, 70, 240, 30);
 
+        txtAdmin.setEditable(false);
         txtAdmin.setFont(new java.awt.Font("Papyrus", 0, 18)); // NOI18N
         jPanel1.add(txtAdmin);
         txtAdmin.setBounds(370, 90, 230, 30);
